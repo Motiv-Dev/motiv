@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="120" viewBox="0 0 400 120">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&amp;display=swap');
+  </style>
+  <text x="200" y="75" text-anchor="middle" dominant-baseline="central" font-family="Pacifico, cursive" font-size="72" fill="#1c1917" transform="rotate(-2 200 60)">Motiv</text>
+</svg>

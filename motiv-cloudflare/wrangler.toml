@@ -1,0 +1,18 @@
+name = "motiv"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".vercel/output/static"
+
+# D1 Database binding
+[[d1_databases]]
+binding = "DB"
+database_name = "motiv-db"
+database_id = "8e48d706-3cb2-42ba-a7c0-0b01668c4699"
+
+# R2 Bucket binding
+[[r2_buckets]]
+binding = "R2"
+bucket_name = "motiv-uploads"
+
+[vars]
+ENVIRONMENT = "production"

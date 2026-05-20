@@ -1,0 +1,6 @@
+# macOS metadata
+__MACOSX/
+.DS_Store
+
+# Windows
+Thumbs.db

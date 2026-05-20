@@ -1,0 +1,10 @@
+JWT_SECRET=your-jwt-secret-here
+ADMIN_EMAIL=admin@motiv.app
+ADMIN_PASSWORD=your-admin-password
+OPENAI_API_KEY=sk-your-openai-key
+CRON_SECRET=your-cron-secret
+STRAVA_CLIENT_ID=your-strava-client-id
+STRAVA_CLIENT_SECRET=your-strava-client-secret
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_your-key
+CLERK_SECRET_KEY=sk_test_your-key

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 320px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #1c1917;
+      color: #fafaf9;
+    }
+    .header {
+      padding: 16px 20px;
+      border-bottom: 1px solid #292524;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo {
+      font-family: 'Pacifico', cursive;
+      color: #f97316;
+      font-size: 20px;
+      transform: rotate(-2deg);
+      display: inline-block;
+    }
+    .badge {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 3px 8px;
+      border-radius: 20px;
+      background: #f97316;
+      color: white;
+    }
+
+    /* Auth section */
+    .auth-section {
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .auth-section h2 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .auth-section p {
+      font-size: 12px;
+      color: #78716c;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+    .login-btn {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      border: none;
+      background: #f97316;
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .login-btn:hover { background: #ea580c; }
+    .login-btn svg { width: 16px; height: 16px; }
+
+    /* Connected user */
+    .user-bar {
+      padding: 12px 20px;
+      border-bottom: 1px solid #292524;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .user-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #f97316;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: white;
+    }
+    .user-email {
+      font-size: 11px;
+      color: #a8a29e;
+      font-weight: 600;
+    }
+    .connected-badge {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 3px 8px;
+      border-radius: 20px;
+      background: #22c55e;
+      color: white;
+    }
+    .logout-btn {
+      background: none;
+      border: none;
+      color: #78716c;
+      font-size: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+    .logout-btn:hover { color: #ef4444; background: #292524; }
+
+    /* Stats */
+    .stats {
+      padding: 20px;
+      text-align: center;
+    }
+    .big-number {
+      font-size: 48px;
+      font-weight: 900;
+      color: #fafaf9;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .unit { font-size: 14px; color: #78716c; font-weight: 600; }
+    .label { font-size: 10px; color: #78716c; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
+
+    /* Sites */
+    .sites {
+      padding: 0 20px 16px;
+    }
+    .sites h3 {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #78716c;
+      margin-bottom: 8px;
+    }
+    .site-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid #292524;
+    }
+    .site-name { font-size: 13px; font-weight: 600; color: #d6d3d1; }
+    .site-time { font-size: 12px; font-weight: 700; color: #f97316; }
+
+    /* Config (fallback manual entry) */
+    .config {
+      padding: 16px 20px;
+      border-top: 1px solid #292524;
+    }
+    .config input {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid #44403c;
+      background: #292524;
+      color: #fafaf9;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      outline: none;
+    }
+    .config input:focus { border-color: #f97316; }
+    .config input::placeholder { color: #78716c; }
+    .config button {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      background: #f97316;
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .config button:hover { background: #ea580c; }
+    .status { font-size: 11px; color: #22c55e; font-weight: 600; text-align: center; margin-top: 6px; }
+    .status.error { color: #ef4444; }
+
+    .hidden { display: none !important; }
+
+    .manual-toggle {
+      text-align: center;
+      padding: 8px 20px 16px;
+    }
+    .manual-toggle button {
+      background: none;
+      border: none;
+      color: #78716c;
+      font-size: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    .manual-toggle button:hover { color: #a8a29e; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="logo">Motiv</span>
+    <span class="badge">Extension</span>
+  </div>
+
+  <!-- Logged out state -->
+  <div id="authSection" class="auth-section">
+    <h2>Connect to Motiv</h2>
+    <p>Login with your Motiv account to track screen time and enable accountability features.</p>
+    <button id="loginBtn" class="login-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+        <polyline points="10 17 15 12 10 7"/>
+        <line x1="15" y1="12" x2="3" y2="12"/>
+      </svg>
+      Login with Motiv
+    </button>
+    <div class="manual-toggle">
+      <button id="showManualBtn">Or enter User ID manually</button>
+    </div>
+  </div>
+
+  <!-- Connected user bar -->
+  <div id="userBar" class="user-bar hidden">
+    <div class="user-info">
+      <div class="user-avatar" id="userAvatar">M</div>
+      <div>
+        <div class="user-email" id="userEmail">user@example.com</div>
+        <span class="connected-badge">Connected</span>
+      </div>
+    </div>
+    <button id="logoutBtn" class="logout-btn">Logout</button>
+  </div>
+
+  <!-- Stats (shown when logged in) -->
+  <div id="statsSection" class="hidden">
+    <div class="stats">
+      <div class="big-number" id="totalMinutes">--</div>
+      <div class="unit">minutes today</div>
+      <div class="label" style="margin-top:8px">Screen Time</div>
+    </div>
+
+    <div class="sites" id="sitesContainer">
+      <h3>Top Sites</h3>
+      <div id="sitesList"></div>
+    </div>
+  </div>
+
+  <!-- Manual config (hidden by default) -->
+  <div id="manualConfig" class="config hidden">
+    <input type="text" id="tokenInput" placeholder="Your Clerk User ID">
+    <input type="text" id="apiInput" placeholder="API URL (default: localhost:3000)">
+    <button id="saveBtn">Save Config</button>
+    <div class="status" id="statusMsg"></div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
