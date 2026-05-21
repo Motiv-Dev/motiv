@@ -27,7 +27,6 @@ export async function POST(req: Request) {
 
   for (const stake of activeStakes) {
     const startDate = new Date(stake.start_date);
-    const endDate = new Date(stake.end_date);
 
     // Skip if yesterday is before stake started
     if (yesterday < startDate) continue;
@@ -55,7 +54,14 @@ export async function POST(req: Request) {
       stake.id, dayNumber
     ) as any;
 
-    if (proof) {
+    // Check if admin approved a leeway request for this day — skips the burn
+    const leeway = await db.get(
+      `SELECT id FROM leeway_requests
+       WHERE stake_id = ? AND day_number = ? AND status = 'approved'`,
+      stake.id, dayNumber
+    ) as any;
+
+    if (proof || leeway) {
       verified++;
     } else {
       // Check if there's a pending or rejected proof
